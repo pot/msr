@@ -10,8 +10,8 @@ import org.jetbrains.annotations.Nullable;
 @MSRHandler(
         predicate = ".*sign$"
 )
-public class SignBlockHandler extends BlockPlacementRule {
-    public SignBlockHandler(@NotNull Block block) {
+public class SignBlockRule extends BlockPlacementRule {
+    protected SignBlockRule(@NotNull Block block) {
         super(block);
     }
 
@@ -31,13 +31,8 @@ public class SignBlockHandler extends BlockPlacementRule {
     }
 
     private static int calculateRotation(float yaw) {
-        // Convert from Minecraft's -180 to 180 range to 0-360 for calculations
-        if (yaw < 0) {
-            yaw += 360;
-        }
+        yaw += 180; // convert it to all positive yaw values
 
-        // Convert yaw to 0-15 rotation value
-        // Each rotation step is 22.5 degrees (360 / 16)
         return Math.round(yaw / 22.5f) % 16;
     }
 }
