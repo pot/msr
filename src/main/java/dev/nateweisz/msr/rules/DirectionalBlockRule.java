@@ -22,7 +22,16 @@ public class DirectionalBlockRule extends BlockPlacementRule {
 
     @Override
     public @Nullable Block blockPlace(@NotNull PlacementState placement) {
-        return block.withProperty("facing", DirectionUtils.getDirection(placement.playerPosition().yaw()));
+        if (placement == null || placement.playerPosition() == null) {
+            return null;
+        }
+
+        String direction = DirectionUtils.getDirection(placement.playerPosition().yaw());
+        if (direction == null) {
+            return null;
+        }
+
+        return block.withProperty("facing", direction);
     }
 
 }
