@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.SOURCE) // only needed at compile time
 @Target(ElementType.TYPE)
 public @interface MSRHandler {
-    @RegExp String predicate() default "";
+    @RegExp String predicate();
 }
