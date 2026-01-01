@@ -23,7 +23,9 @@ public class SignBlockHandler extends BlockPlacementRule {
             block = this.block.withProperty("rotation", String.valueOf(rotation));
         }
 
+        // TODO: place on the wall, should we make dif handlers for the dif sign types.
         block = this.block;
+
 
         return block;
     }
